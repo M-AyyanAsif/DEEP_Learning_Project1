@@ -225,3 +225,4 @@ artifacts/*
 *.dll
 *.so
 *.pyd
+myenv/
