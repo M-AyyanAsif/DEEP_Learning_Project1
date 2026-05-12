@@ -77,6 +77,6 @@ class PrepareBaseModel:
         )
 
         self.save_model(
-            path=self.config.base_model_path,
+            path=self.config.updated_base_model_path,
             model=self.full_model
         )
