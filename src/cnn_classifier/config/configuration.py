@@ -72,6 +72,7 @@ class ConfigurationManager:
         return training_config
     
     def get_evaluation_config(self) -> EvaluationConfig:
+
         eval_config = EvaluationConfig(
             path_of_model=Path(
                 "artifacts/training/trained_model.h5"
@@ -79,8 +80,9 @@ class ConfigurationManager:
             training_data=Path(
                 "artifacts/data_ingestion/CT-KIDNEY-DATASET-Normal-Cyst-Tumor-Stone"
             ),
+
             mlflow_uri="https://dagshub.com/stopmold8290/DEEP_Learning_Project1.mlflow",
-            all_params=self.params,
+            all_params=dict(self.params),
             params_image_size=self.params.IMAGE_SIZE,
             params_batch_size=self.params.BATCH_SIZE
         )

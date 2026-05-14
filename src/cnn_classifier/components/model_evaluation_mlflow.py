@@ -2,10 +2,9 @@ import tensorflow as tf
 from pathlib import Path
 import mlflow
 import mlflow.keras
-from urllib.parse import urlparse
 from cnn_classifier.entity.config_entity import EvaluationConfig
-from cnn_classifier.utils.common import read_yaml , create_directories, save_json 
-
+from cnn_classifier.utils.common import read_yaml , create_directories, save_json   
+import dagshub
 class Evaluation:
 
     def __init__(self, config: EvaluationConfig):
@@ -61,32 +60,24 @@ class Evaluation:
 
     def log_into_mlflow(self):
 
-        mlflow.set_registry_uri(self.config.mlflow_uri)
-
-        tracking_url_type_store = urlparse(
-            mlflow.get_tracking_uri()
-        ).scheme
+        dagshub.init(
+            repo_owner="stopmold8290",
+            repo_name="DEEP_Learning_Project1",
+            mlflow=True
+        )
 
         with mlflow.start_run():
 
-            mlflow.log_params(self.config.all_params)
+            mlflow.log_params(
+                dict(self.config.all_params)
+            )
 
             mlflow.log_metrics({
-                "loss": self.score[0],
-                "accuracy": self.score[1]
+                "loss": float(self.score[0]),
+                "accuracy": float(self.score[1])
             })
 
-            if tracking_url_type_store != "file":
-
-                mlflow.keras.log_model(
-                    self.model,
-                    "model",
-                    registered_model_name="VGG16Model"
-                )
-
-            else:
-
-                mlflow.keras.log_model(
-                    self.model,
-                    "model"
-                )
+            mlflow.keras.log_model(
+               self.model,
+               "model"
+            )
