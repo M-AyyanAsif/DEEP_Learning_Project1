@@ -272,7 +272,7 @@ http://localhost:8080
 ### Windows CMD
 
 ```bash
-set MLFLOW_TRACKING_URI=https://dagshub.com/entbappy/Kidney-Disease-Classification-MLflow-DVC.mlflow
+set MLFLOW_TRACKING_URI=https://dagshub.com/stopmold8290/DEEP_Learning_Project1.mlflow/#/.mlflow
 
 set MLFLOW_TRACKING_USERNAME=entbappy
 
