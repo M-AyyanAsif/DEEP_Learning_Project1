@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing import image
 class PredictionPipeline:
     
     # Load model only once
-    model = load_model(os.path.join("artifacts", "training", "trained_model.h5"))
+    model = load_model(os.path.join("model", "trained_model.h5"))
 
     def __init__(self, filename):
         self.filename = filename
