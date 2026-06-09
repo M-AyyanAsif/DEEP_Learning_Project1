@@ -1,3 +1,13 @@
+---
+title: Kidney Tumor Disease Classification
+emoji: 🔬
+colorFrom: red
+colorTo: blue
+sdk: docker
+app_file: app.py
+pinned: false
+---
+
 # DEEP_Learning_Project1
 # 🧠 Kidney Disease Classification using Deep Learning
 
@@ -20,7 +30,7 @@ The project follows modular coding architecture and industry-standard engineerin
 - 📊 Experiment tracking using MLflow
 - 🔁 Reproducible ML pipelines using DVC
 - 🐳 Dockerized application
-- ☁️ AWS deployment with EC2 & ECR
+- ☁️ Deployment with Hugging Face Spaces
 - 🔄 CI/CD automation using GitHub Actions
 - 🌐 Flask web application for predictions
 - 📁 Configuration-driven pipeline
@@ -113,8 +123,7 @@ Kidney-Disease-Classification-MLflow-DVC/
 
 ## 🔹 Backend & Deployment
 - Flask
-- AWS EC2
-- AWS ECR
+- Hugging Face Spaces
 
 ## 🔹 Utilities
 - YAML
