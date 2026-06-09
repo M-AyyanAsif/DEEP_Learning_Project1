@@ -1,9 +1,25 @@
-FROM  python:3.13-slim-buster
+FROM python:3.10-slim
 
-RUN apt update -y && apt install awscli -y
-WORKDIR /app
+# Install system dependencies
+RUN apt-get update -y && apt-get install -y awscli git && rm -rf /var/lib/apt/lists/*
 
-COPY . /app
-RUN pip install -r requirements.txt
+# Create a non-root user for Hugging Face security
+RUN useradd -m -u 1000 user
+USER user
+ENV PATH="/home/user/.local/bin:${PATH}"
 
-CMD ["python3", "app.py"]
+WORKDIR /home/user/app
+
+# Copy requirements and install
+COPY --chown=user requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir --upgrade -r requirements.txt
+
+# Copy the rest of the application files
+COPY --chown=user . .
+
+# Expose Hugging Face's mandatory port
+EXPOSE 7860
+
+# Run the flask application
+CMD ["python", "app.py"]
