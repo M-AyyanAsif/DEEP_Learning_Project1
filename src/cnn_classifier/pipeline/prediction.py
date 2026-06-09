@@ -19,8 +19,7 @@ class PredictionPipeline:
             
         print(f"Loading raw weights from: {model_path}")
         
-        # 2. Re-create the network structure manually to ignore broken metadata
-        # Assuming you used VGG16 as your base model architecture:
+        
         base_model = tf.keras.applications.VGG16(
             include_top=False, 
             weights=None, 
@@ -31,11 +30,10 @@ class PredictionPipeline:
         x = tf.keras.layers.Flatten()(base_model.output)
         prediction_layer = tf.keras.layers.Dense(units=2, activation="softmax")(x)
         
-        # Bind the model structure
+        
         self.model = tf.keras.models.Model(inputs=base_model.input, outputs=prediction_layer)
         
-        # 3. Load purely the raw mathematical weight matrices
-        # By using by_name=True and skip_mismatch=True, metadata errors disappear!
+        
         self.model.load_weights(model_path, by_name=True, skip_mismatch=True)
         print("Model weights successfully bound to structure!")
 

@@ -10,7 +10,7 @@ ENV PATH="/home/user/.local/bin:${PATH}"
 
 WORKDIR /home/user/app
 
-# --- ADD THIS LINE HERE ---
+
 ENV PYTHONPATH=src
 
 COPY --chown=user requirements.txt .

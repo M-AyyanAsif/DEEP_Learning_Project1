@@ -22,7 +22,7 @@ def home():
 @app.route("/train", methods=["GET", "POST"])
 @cross_origin()
 def trainRoute():
-    # Using python executable safety flag in cloud containers
+    
     exit_code = os.system("python main.py")
     if exit_code != 0:
         return jsonify({"error": "Training pipeline failed execution"}), 500
@@ -39,7 +39,7 @@ def predictRoute():
 
         image_data = data["image"]
 
-        # Create a dynamic, thread-safe secure temp file inside the OS container storage layer
+        
         with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as temp_img:
             temp_filename = temp_img.name
 
@@ -54,7 +54,7 @@ def predictRoute():
             return jsonify(result)
 
         finally:
-            # Clean up the container space instantly after inference to prevent memory leaks
+            
             if os.path.exists(temp_filename):
                 os.remove(temp_filename)
 
