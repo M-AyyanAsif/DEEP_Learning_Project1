@@ -1,5 +1,6 @@
 import numpy as np
 import os
+<<<<<<< HEAD
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 
@@ -46,6 +47,42 @@ class PredictionPipeline:
         prediction_probs = self.model.predict(test_image)
         result = np.argmax(prediction_probs, axis=1)
 
+=======
+from tensorflow.keras.models import load_model
+from tensorflow.keras.preprocessing import image
+
+
+class PredictionPipeline:
+    
+    # Load model only once
+    model = load_model(os.path.join("model", "trained_model.h5"))
+
+    def __init__(self, filename):
+        self.filename = filename
+
+    def predict(self):
+
+        test_image = image.load_img(
+            self.filename,
+            target_size=(224, 224)
+        )
+
+        test_image = image.img_to_array(test_image)
+
+        # IMPORTANT: normalize image
+        test_image = test_image / 255.0
+
+        test_image = np.expand_dims(test_image, axis=0)
+
+        prediction_probs = self.model.predict(test_image)
+
+        print("Prediction Probabilities:", prediction_probs)
+
+        result = np.argmax(prediction_probs, axis=1)
+
+        print("Predicted Class:", result)
+
+>>>>>>> 578e7f68f7edccf75be8a865a97f6e32673e9426
         if result[0] == 1:
             prediction = "Tumor"
         else:

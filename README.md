@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: Kidney Tumor Disease Classification
 emoji: 🔬
@@ -8,6 +9,8 @@ app_file: app.py
 pinned: false
 ---
 
+=======
+>>>>>>> 578e7f68f7edccf75be8a865a97f6e32673e9426
 # DEEP_Learning_Project1
 # 🧠 Kidney Disease Classification using Deep Learning
 
@@ -30,7 +33,11 @@ The project follows modular coding architecture and industry-standard engineerin
 - 📊 Experiment tracking using MLflow
 - 🔁 Reproducible ML pipelines using DVC
 - 🐳 Dockerized application
+<<<<<<< HEAD
 - ☁️ Deployment with Hugging Face Spaces
+=======
+- ☁️ AWS deployment with EC2 & ECR
+>>>>>>> 578e7f68f7edccf75be8a865a97f6e32673e9426
 - 🔄 CI/CD automation using GitHub Actions
 - 🌐 Flask web application for predictions
 - 📁 Configuration-driven pipeline
@@ -123,7 +130,12 @@ Kidney-Disease-Classification-MLflow-DVC/
 
 ## 🔹 Backend & Deployment
 - Flask
+<<<<<<< HEAD
 - Hugging Face Spaces
+=======
+- AWS EC2
+- AWS ECR
+>>>>>>> 578e7f68f7edccf75be8a865a97f6e32673e9426
 
 ## 🔹 Utilities
 - YAML

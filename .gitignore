@@ -149,5 +149,9 @@ research/
 *.ckpt
 *.dll
 *.pyd
+<<<<<<< HEAD
 *how to run in local as well as in aws.txt*
 inputImage.jpg
+=======
+*how to run in local as well as in aws.txt*
+>>>>>>> 578e7f68f7edccf75be8a865a97f6e32673e9426
