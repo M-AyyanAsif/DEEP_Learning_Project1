@@ -1,5 +1,6 @@
 import os
 import tempfile
+import traceback
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS, cross_origin
 
@@ -43,7 +44,7 @@ def predictRoute():
             temp_filename = temp_img.name
 
         try:
-            # Decode the base64/binary payload safely into our temp location
+            
             decodeImage(image_data, temp_filename)
 
             # Instantiate the prediction pipeline safely per-request
@@ -58,9 +59,15 @@ def predictRoute():
                 os.remove(temp_filename)
 
     except Exception as e:
+        
+        print("\n" + "="*50)
+        print("!!! INFERENCE CRASH DETECTED !!!")
+        print(traceback.format_exc())
+        print("="*50 + "\n")
+        
         return jsonify({"error": f"Inference Pipeline Error: {str(e)}"}), 500
 
 if __name__ == "__main__":
-    # Hugging face dynamically assigns ports via environment variables, defaulting to 7860
+    
     port = int(os.environ.get("PORT", 7860))
     app.run(host="0.0.0.0", port=port)
