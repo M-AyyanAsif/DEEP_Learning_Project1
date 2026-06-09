@@ -307,65 +307,16 @@ docker run -p 8080:8080 kidney-classifier
 
 ---
 
-# ☁️ AWS Deployment with GitHub Actions
+# ☁️ HF Deployment with GitHub Actions
 
-## AWS Services Used
-
-### EC2
+### HF Spaces
 Virtual machine hosting application.
 
-### ECR
+### HF Spaces
 Stores Docker images.
 
 ---
 
-# 🔑 IAM Policies Required
-
-Attach:
-- AmazonEC2FullAccess
-- AmazonEC2ContainerRegistryFullAccess
-
----
-
-# 🗂️ Create ECR Repository
-
-Example:
-
-```text
-566373416292.dkr.ecr.us-east-1.amazonaws.com/chicken
-```
-
----
-
-# 🖥️ Setup EC2 Instance
-
-Install Docker:
-
-```bash
-sudo apt-get update -y
-```
-
-```bash
-sudo apt-get upgrade -y
-```
-
-```bash
-curl -fsSL https://get.docker.com -o get-docker.sh
-```
-
-```bash
-sudo sh get-docker.sh
-```
-
-```bash
-sudo usermod -aG docker ubuntu
-```
-
-```bash
-newgrp docker
-```
-
----
 
 # 🔄 Configure GitHub Self Hosted Runner
 
