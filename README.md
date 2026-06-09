@@ -1,13 +1,3 @@
----
-title: Kidney Tumor Disease Classification
-emoji: 🔬
-colorFrom: red
-colorTo: blue
-sdk: docker
-app_file: app.py
-pinned: false
----
-
 # DEEP_Learning_Project1
 # 🧠 Kidney Disease Classification using Deep Learning
 
